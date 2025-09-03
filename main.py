@@ -7,6 +7,7 @@ def main():
     testCase3()
     testCase4()
 
+#using for sorting the radius of each circle from min to max
 def circleArrayRadiusSort(inputArray):
     sortedArray = []
     tempArray = inputArray.copy()
@@ -19,8 +20,11 @@ def circleArrayRadiusSort(inputArray):
         tempArray.remove(minTuple)
     return sortedArray
 
+#main working function
+#checks for circle cluster intersection
 def intersectChecker(inputArray):
     n = len(inputArray)
+    #puts all intersececting circles in an adj list
     adjListOfCircles = [[] for _ in range(n)]
     for i in range(n):
         for j in range(i + 1, n):
@@ -37,10 +41,12 @@ def intersectChecker(inputArray):
     dfsForCircles(0)
     return all(visited)
 
+#helper function that checks for circle intersection
 def circlesIntersect(circle1, circle2):
     distance = math.sqrt((circle1[0] - circle2[0]) ** 2 + (circle1[1] - circle2[1]) ** 2)
     return distance <= circle1[2] + circle2[2]
 
+#testcases 1-4:
 def testCase1():
     input1 = (1,3,0.7)
     input2 = (2,3,0.4)
